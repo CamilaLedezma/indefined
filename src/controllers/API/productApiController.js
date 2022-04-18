@@ -95,5 +95,37 @@ module.exports = {
         
         
 
-    }
+    },
+    list:async(req,res)=>{
+        try{
+            Product
+            .findAll(
+                {include:["discounts","categories","images","sizes","colors"]})
+            .then(prod=>{
+                let productArray=[]
+                for(let i=0; i<prod.length; i++){
+                    let objeto={
+                        id:prod[i].id,
+                        name:prod[i].name,
+                        price:prod[i].price,
+                        description:prod[i].description,
+                        stock:prod[i].stock,
+                        stock_min:prod[i].stock_min,
+                        stock_max:prod[i].stock_max,
+                        category:prod[i].categories.name,
+                        size:prod[i].sizes.name,
+                        color:prod[i].colors.name,
+                        discount:prod[i].discounts.name,
+                        image:prod[i].images[0].url_name
+                    }
+                    productArray.push(objeto)
+                }
+                res.status(200).json({
+                    products:productArray,
+                })
+                
+                
+            })}
+            catch(err){console.log(err)}
+}
 }

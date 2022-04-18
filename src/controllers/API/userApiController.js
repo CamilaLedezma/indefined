@@ -43,5 +43,30 @@ module.exports = {
             })
         })
 
-    }
+    },
+    list:async(req,res)=>{
+        try{
+            DB.User
+            .findAll(
+                {include:["avatars","rols"]})
+            .then(prod=>{
+                let productArray=[]
+                for(let i=0; i<prod.length; i++){
+                    let objeto={
+                        id:prod[i].id,
+                        name:prod[i].name,
+                        email:prod[i].email,
+                        rol:prod[i].rols.name,
+                        avatar:prod[i].avatars[0].url_name
+                    }
+                    productArray.push(objeto)
+                }
+                res.status(200).json({
+                    users:productArray,
+                })
+                
+                
+            })}
+            catch(err){console.log(err)}
+}
 }

@@ -10,6 +10,8 @@ let price=document.querySelector(".price");
 let discountId=document.querySelector(".discount-id");
 let visibility=document.querySelector(".visibility");
 let recommended=document.querySelector(".recommended");
+let image=document.querySelector(".image")
+console.log(image.files)
 
 let formulario = document.querySelector("form.registerjs");
 
@@ -26,7 +28,7 @@ let ePrice=document.querySelector("#ePrice");
 let eDiscountId=document.querySelector("#eDiscountId");
 let eVisibility=document.querySelector("#eVisibility");
 let eRecommended=document.querySelector("#eRecommended");
-
+let eImage=document.querySelector("#eImage")
 
 
 nombre.addEventListener("blur", nombreValidator)
@@ -41,6 +43,7 @@ price.addEventListener("blur",priceValidator)
 discountId.addEventListener("blur",discountValidator)
 visibility.addEventListener("blur",visibilityValidator)
 recommended.addEventListener("blur",recommendedValidator)
+image.addEventListener("blur",imageValidator)
 
 console.log(stock.value)
 console.log(stockMin.value)
@@ -89,7 +92,20 @@ function nombreValidator()
         
         console.log(errores);
     }
-
+    function imageValidator(){
+        if(image.file.length==0){
+            let error="Suba una imagen por favor";
+            eImage.innerHTML=error;
+            errores.image=error;
+        }else if(image.file[0].type != 'image/jpeg' && image.file[0].type!='image/png'){
+            let error="El formato valido es .jpeg, .jpg, .png y .gif";
+            eImage.innerHTML=error;
+            errores.image=error;
+        }else{
+            eImage.innerHTML="";
+            errores.image="";
+        }
+    }
 function categoryValidator()
     {
         if (categories.value == ""){
@@ -118,7 +134,7 @@ function sizesValidator()
 
 function stockValidator()
     {
-            if (stock.value == "" && stock.value<=0){
+            if (stock.value == "" && Number(stock.value)<=0){
                 let error = "ingrese una cantidad numérica de stock mayor a cero";
                 eStock.innerHTML = error
                 errores.stock = error;
@@ -130,11 +146,11 @@ function stockValidator()
     };
 function stockMinValidator()
     {
-        if (stockMin.value == "" && stockMin.value<=0){
+        if (stockMin.value == "" && Number(stockMin.value)<=0){
             let error = "ingrese una cantidad numérica de stock mínima mayor a cero";
             eStockMin.innerHTML = error
             errores.stockMin = error;
-        }else if(stock.value<stockMin.value ){
+        }else if(Number(stock.value)<Number(stockMin.value) ){
             let error = "ingrese un numero  menor a Stock";
             eStockMin.innerHTML = error
             errores.stockMin = error;
@@ -146,12 +162,12 @@ function stockMinValidator()
     }
 function stockMaxValidator()
     {
-        if (stockMax.value == "" && stockMin.value<=0){
+        if (stockMax.value == "" && Number(stockMin.value)<=0){
                 let error = "ingrese una cantidad numérica de stock máxima mayor a cero";
                 eStockMax.innerHTML = error
                 errores.stockMax = error;
             
-        }else if( stock.value>stockMax.value && stockMax.value<stockMin.value){
+        }else if( Number(stock.value)>Number(stockMax.value) && Number(stockMax.value)<Number(stockMin.value)){
             let error = "ingrese un numero  mayor a Stock y a StockMin";
             eStockMax.innerHTML = error
             errores.stockMin = error;

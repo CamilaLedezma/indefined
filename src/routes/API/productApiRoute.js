@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/products", userApiController.products)
 router.get("/products/:id", userApiController.detail)
+router.get("/productList", userApiController.list)
 
 
 

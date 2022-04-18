@@ -101,7 +101,12 @@ const userController = {
         let file;
         let cambio;
         console.log(req.file)
-
+        let mailParaVerificar=req.body.email
+            let verif=mailParaVerificar.search("@indefined.com")
+            var rol;
+            if(verif!=-1){
+                rol=1
+            }else{rol=2}
         if(req.file!=undefined){
             
             file=req.file.filename 
@@ -121,7 +126,8 @@ const userController = {
                 name:req.body.name,
                 email:req.body.email,
                 date:null,
-                password:passwordForm
+                password:passwordForm,
+                roles_id:rol
             },
             {
                 where:{id:idP}

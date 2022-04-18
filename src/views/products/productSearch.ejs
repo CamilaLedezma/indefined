@@ -21,7 +21,7 @@
                                 <%let descuento= products.price-((products.price/100)*products.discounts.name) %>
                                 <%let conDecimal = descuento.toFixed(2); %>
                                 <h3>$<%= conDecimal %> </h3>
-                                <a href="products/<%= products.id %> "><button class="ver-btn">VER</button></a>
+                                <a href="<%= products.id %> "><button class="ver-btn">VER</button></a>
                         </div>
                         
                     </article>
