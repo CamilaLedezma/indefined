@@ -11,8 +11,8 @@ Ser empatic@ con los tiempos de los demás<br>
 
 ## 4. Hacer menos:
 *No tener actulizado el trello*<br>
+entregar cosas a medias
 ⚠*No avisar que no estaremos en clase*<br>
 
 ## 5. Dejar de hacer:
-⛔
-🚩*Esperar a que otro me diga que hacer*<br>🚩 
+🚩*Esperar a que otro me diga que hacer*<br>
