@@ -5,7 +5,7 @@
     <%- include("../partials/header") %> 
     <main class="index">
         <section class="sec-banner">
-                <a href="/products"><img src="/images/pagina/banner.png" alt="banner"><h1>¡CUIDADO! NUEVA TEMPORADA SE ACERCA</h1></a>
+                <a href="/products"><img src="/images/pagina/banner.png" alt="banner"></a>
         </section>
 
         <section class="sec-categorys">
@@ -22,7 +22,7 @@
             <article class="product">
                 <% for( let  i = 0; i< product.images.length; i++ ) { %>
                     <img src="/images/product-image/<%= product.images[i].url_name%>"  alt="<%= product.name %>">
-                    <% //console.log(product.images[i].url_name) %> 
+                    
                 <% } %>
                     
                     <div class="product-description">
